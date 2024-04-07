@@ -43,3 +43,19 @@ jobs:
           with:
             name: Mocha-Test-Result
             path: test-results.xml
+
+    dev-deploy:
+      name: Deployment to DEV
+      runs-on: ubuntu-latest
+      steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup kubectl
+        uses: azure/k8s-set-context@v4
+        with:
+           method: kubeconfig
+           kubeconfig: ${{ secrets.KUBECONFIG }}
+
+      - name: run kubectl
+        run: kubectl version --short -o yaml
