@@ -47,6 +47,8 @@ jobs:
     dev-deploy:
       name: Deployment to DEV
       runs-on: ubuntu-latest
+      environment:
+        name: development
       steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
