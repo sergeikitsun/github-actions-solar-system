@@ -64,6 +64,13 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'v1.26.0' # default is latest stable
+        id: install
+
+
+      - name: Setup kubecontext
         uses: azure/k8s-set-context@v4
         with:
            method: kubeconfig
